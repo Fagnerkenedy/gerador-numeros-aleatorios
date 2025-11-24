@@ -1,4 +1,4 @@
-const gerador = (fields) => {
+const geradorUnico = (fields) => {
         const casas = fields.casasDecimais || 1;
         const totalPossivel = Math.round((fields.maxima - fields.minima) * Math.pow(10, casas)) + 1;
         if (fields.quantidade > totalPossivel) {
@@ -16,4 +16,4 @@ const gerador = (fields) => {
         return results;
 }
 
-export default gerador
+export default geradorUnico

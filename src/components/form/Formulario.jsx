@@ -2,6 +2,10 @@ import { Affix, Button, Form, Grid } from "antd"
 import FormItem from "./FormItem"
 import './index.css'
 import { useNavigate } from "react-router-dom";
+import gerador from "../../utils/gerador";
+import geradorUnico from "../../utils/geradorUnico";
+import agrupador from "../../utils/agrupador";
+import notify from "../../utils/notify";
 
 const { useBreakpoint } = Grid;
 
@@ -13,10 +17,25 @@ const Formulario = () => {
     const handleSubmit = (fields) => {
         try {
             console.log("fields antes: ", fields);
-            
+
             // const query = new URLSearchParams(fields).toString()
             // navigate(`/list?${encodeURIComponent(JSON.stringify(fields))}`)
-            navigate('/list', { state: fields });
+            // setLoading(true)
+            let numbers
+            if (fields.duplicados) {
+                numbers = gerador(fields)
+            } else {
+                numbers = geradorUnico(fields)
+            }
+            const grupos = agrupador(numbers, fields.agruparPor || 20)
+            const linhasAgrupadas = grupos.map((grupo) => {
+                return agrupador(grupo, fields.numerosPorLinha || 5)
+            })
+            console.log("resuklt", linhasAgrupadas);
+
+            const title = `${fields.categoria}: ${fields.minima}° até ${fields.maxima}°`
+
+            navigate('/list', { state: {result: linhasAgrupadas, title: title} });
         } catch (error) {
             console.log("Erro ao gerar números: ", error)
             notify({
@@ -60,7 +79,7 @@ const Formulario = () => {
                     type="primary"
                     size="large"
                     htmlType="submit"
-                    // onClick={() => document.getElementById('scrollableDiv').scrollIntoView({ behavior: "smooth" })}
+                // onClick={() => document.getElementById('scrollableDiv').scrollIntoView({ behavior: "smooth" })}
                 >
                     Gerar
                 </Button>

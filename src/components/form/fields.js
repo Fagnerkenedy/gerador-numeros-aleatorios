@@ -4,7 +4,7 @@ const fields = [
         name: "categoria",
         type: "select",
         required: true,
-        initialValue: "Fritadeiras",
+        // initialValue: "Fritadeiras",
         options: [
             {
                 id: 1,
@@ -88,21 +88,21 @@ const fields = [
         name: "minima",
         type: "number",
         required: true,
-        initialValue: 167.0
+        // initialValue: 167.0
     },
     {
         label: "Temperatura Final",
         name: "maxima",
         type: "number",
         required: true,
-        initialValue: 172.0
+        // initialValue: 172.0
     },
     {
         label: "Quantidade",
         name: "quantidade",
         type: "number",
         required: true,
-        initialValue: 8
+        // initialValue: 8
     },
     {
         label: "Casas decimais",
@@ -128,7 +128,7 @@ const fields = [
         label: "Permitir duplicados",
         name: "duplicados",
         type: "switch",
-        initialValue: true
+        initialValue: false
     }
 ]
 

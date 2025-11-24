@@ -15,9 +15,9 @@ const FormItem = ({ form }) => {
         form.setFieldValue('maxima', item.max)
         form.setFieldValue('quantidade', item.qtd)
         form.setFieldValue('agruparPor', item.agrupado)
-        document.getElementById('scrollableDiv').scrollIntoView({
-            behavior: "smooth",
-        });
+        // document.getElementById('scrollableDiv').scrollIntoView({
+        //     behavior: "smooth",
+        // });
         form.submit()
     }
     return fields.map(field => {
@@ -37,6 +37,7 @@ const FormItem = ({ form }) => {
                             initialValue={field.initialValue}
                         >
                             <Select
+                                placeholder="Selecione.."
                                 className="borderRadius"
                                 open={false}
                                 style={{ width: '100%', textAlign: "left" }}

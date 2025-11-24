@@ -9,38 +9,38 @@ const { useBreakpoint } = Grid;
 
 const List = () => {
   const screens = useBreakpoint();
-  const [title, setTitle] = useState('')
-  const [result, setResult] = useState([])
+  // const [title, setTitle] = useState('')
+  // const [result, setResult] = useState([])
   const [loading, setLoading] = useState(false)
   const { state } = useLocation()
   // const { search } = useLocation()
   // const params = Object.fromEntries(new URLSearchParams(search))
-  const fields = state
-  console.log("fields: ", fields)
+  const { result, title } = state
+  // console.log("fields: ", fields)
   
-  useEffect(() => {
-    if (!fields) return;
-    handleGenerate();
-  }, [fields]);
+  // useEffect(() => {
+  //   if (!fields) return;
+  //   handleGenerate();
+  // }, [fields]);
 
-  const handleGenerate = () => {
-    setLoading(true)
-    let numbers
-    if (fields.duplicados) {
-      numbers = gerador(fields)
-    } else {
-      numbers = geradorUnico(fields)
-    }
-    const grupos = agrupador(numbers, fields.agruparPor || 20)
-    const linhasAgrupadas = grupos.map((grupo) => {
-      return agrupador(grupo, fields.numerosPorLinha || 5)
-    })
-    console.log("resuklt", linhasAgrupadas);
+  // const handleGenerate = () => {
+  //   setLoading(true)
+  //   let numbers
+  //   if (fields.duplicados) {
+  //     numbers = gerador(fields)
+  //   } else {
+  //     numbers = geradorUnico(fields)
+  //   }
+  //   const grupos = agrupador(numbers, fields.agruparPor || 20)
+  //   const linhasAgrupadas = grupos.map((grupo) => {
+  //     return agrupador(grupo, fields.numerosPorLinha || 5)
+  //   })
+  //   console.log("resuklt", linhasAgrupadas);
 
-    setTitle(`${fields.categoria}: ${fields.minima}° até ${fields.maxima}°`)
-    setResult(linhasAgrupadas)
-    setLoading(false)
-  }
+  //   setTitle(`${fields.categoria}: ${fields.minima}° até ${fields.maxima}°`)
+  //   setResult(linhasAgrupadas)
+  //   setLoading(false)
+  // }
 
 
   const { Text } = Typography
