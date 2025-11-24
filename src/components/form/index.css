@@ -1,0 +1,12 @@
+.borderRadius .ant-select-selector {
+    border-radius: 50px !important;
+    margin: 0px !important;
+}
+
+.form .ant-form-item {
+    margin-bottom: 16px;
+}
+
+.switch.ant-switch-checked {
+  background-color: #1a1a1aff !important; /* cor quando ON */
+}
