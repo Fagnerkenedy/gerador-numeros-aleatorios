@@ -39,9 +39,7 @@ const List = () => {
 
     setTitle(`${fields.categoria}: ${fields.minima}° até ${fields.maxima}°`)
     setResult(linhasAgrupadas)
-    setTimeout(() => {
-      setLoading(false)
-    }, 400)
+    setLoading(false)
   }
 
 

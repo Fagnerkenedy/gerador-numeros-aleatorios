@@ -1,10 +1,6 @@
 import { Affix, Button, Form, Grid } from "antd"
 import FormItem from "./FormItem"
 import './index.css'
-import gerador from "../../utils/gerador";
-import geradorUnico from "../../utils/geradorUnico";
-import agrupador from "../../utils/agrupador";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const { useBreakpoint } = Grid;
@@ -64,7 +60,7 @@ const Formulario = () => {
                     type="primary"
                     size="large"
                     htmlType="submit"
-                    onClick={() => document.getElementById('scrollableDiv').scrollIntoView({ behavior: "smooth" })}
+                    // onClick={() => document.getElementById('scrollableDiv').scrollIntoView({ behavior: "smooth" })}
                 >
                     Gerar
                 </Button>

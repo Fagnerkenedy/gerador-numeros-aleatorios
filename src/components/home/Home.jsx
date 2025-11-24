@@ -23,7 +23,7 @@ const Home = () => {
                     >
                         <Formulario />
                     </Card>
-                    <div id="scrollableDiv" />
+                    {/* <div id="scrollableDiv" /> */}
                 </Col>
                 {screens.xs ? <Divider /> : <Divider style={{ height: "calc(100vh - 25px)" }} type="vertical" />}
             </Row>
