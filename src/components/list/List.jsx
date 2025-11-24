@@ -13,27 +13,31 @@ const List = () => {
   const [result, setResult] = useState([])
   const [loading, setLoading] = useState(false)
   const { state } = useLocation()
-
+  // const { search } = useLocation()
+  // const params = Object.fromEntries(new URLSearchParams(search))
+  const fields = state
+  console.log("fields: ", fields)
+  
   useEffect(() => {
-    if (!state) return;
+    if (!fields) return;
     handleGenerate();
-  }, [state]);
+  }, [fields]);
 
   const handleGenerate = () => {
     setLoading(true)
     let numbers
-    if (state.duplicados) {
-      numbers = gerador(state)
+    if (fields.duplicados) {
+      numbers = gerador(fields)
     } else {
-      numbers = geradorUnico(state)
+      numbers = geradorUnico(fields)
     }
-    const grupos = agrupador(numbers, state.agruparPor || 20)
+    const grupos = agrupador(numbers, fields.agruparPor || 20)
     const linhasAgrupadas = grupos.map((grupo) => {
-      return agrupador(grupo, state.numerosPorLinha || 5)
+      return agrupador(grupo, fields.numerosPorLinha || 5)
     })
     console.log("resuklt", linhasAgrupadas);
 
-    setTitle(`${state.categoria}: ${state.minima}° até ${state.maxima}°`)
+    setTitle(`${fields.categoria}: ${fields.minima}° até ${fields.maxima}°`)
     setResult(linhasAgrupadas)
     setTimeout(() => {
       setLoading(false)

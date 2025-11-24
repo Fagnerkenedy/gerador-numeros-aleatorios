@@ -16,15 +16,11 @@ const Formulario = () => {
 
     const handleSubmit = (fields) => {
         try {
-            // setLoading(true)
+            console.log("fields antes: ", fields);
             
-            // setResult(linhasAgrupadas)
-
-            const query = new URLSearchParams(fields)
+            // const query = new URLSearchParams(fields).toString()
+            // navigate(`/list?${encodeURIComponent(JSON.stringify(fields))}`)
             navigate('/list', { state: fields });
-            // setTimeout(() => {
-            // setLoading(false)
-            // }, 200)
         } catch (error) {
             console.log("Erro ao gerar números: ", error)
             notify({
@@ -36,8 +32,6 @@ const Formulario = () => {
                 width: 600,
                 pauseOnHover: true
             })
-            // setLoading(false)
-            // setResult([])
         }
     }
 
