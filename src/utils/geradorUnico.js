@@ -2,7 +2,7 @@ const geradorUnico = (fields) => {
         const casas = fields.casasDecimais || 1;
         const totalPossivel = Math.round((fields.maxima - fields.minima) * Math.pow(10, casas)) + 1;
         if (fields.quantidade > totalPossivel) {
-            throw new Error(`Não é possível gerar ${fields.quantidade} valores únicos nesse intervalo. Máximo permitido: ${totalPossivel}`);
+            throw new Error(`Não é possível gerar ${fields.quantidade} valores únicos nesse intervalo. Máximo permitido: ${totalPossivel}. Ative a opção "Permitir duplicados".`);
         }
         const results = [];
         for (let i = 0; i < fields.quantidade; i++) {

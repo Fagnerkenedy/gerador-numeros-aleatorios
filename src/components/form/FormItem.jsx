@@ -1,7 +1,7 @@
 import { Checkbox, Form, InputNumber, Menu, Modal, Select, Switch, Typography } from "antd"
 import fields from "./fields"
 import { useState } from "react"
-import './index.css'
+import './styles.css'
 
 const FormItem = ({ form }) => {
     const [checked, setChecked] = useState(true)

@@ -1,5 +1,6 @@
 import { Card, Col, Divider, Grid, Layout, Row, Typography } from "antd"
 import Formulario from "../form/Formulario"
+import './styles.css'
 const { useBreakpoint } = Grid;
 
 const Home = () => {
@@ -23,9 +24,8 @@ const Home = () => {
                     >
                         <Formulario />
                     </Card>
-                    {/* <div id="scrollableDiv" /> */}
                 </Col>
-                {screens.xs ? <Divider /> : <Divider style={{ height: "calc(100vh - 25px)" }} type="vertical" />}
+                {/* {screens.xs ? <Divider /> : <Divider style={{ height: "calc(100vh - 25px)" }} type="vertical" />} */}
             </Row>
         </Layout>
     )

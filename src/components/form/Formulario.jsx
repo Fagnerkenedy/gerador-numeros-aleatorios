@@ -1,6 +1,6 @@
 import { Affix, Button, Form, Grid } from "antd"
 import FormItem from "./FormItem"
-import './index.css'
+import './styles.css'
 import { useNavigate } from "react-router-dom";
 import gerador from "../../utils/gerador";
 import geradorUnico from "../../utils/geradorUnico";
