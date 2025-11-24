@@ -73,7 +73,7 @@ const Formulario = () => {
             onFinish={handleSubmit}
         >
             <FormItem form={form} />
-            <Affix offsetBottom={10}>
+            <Affix offsetBottom={15}>
                 <Button
                     style={{ backgroundColor: "#1a1a1aff", width: '100%', borderRadius: 50 }}
                     type="primary"
