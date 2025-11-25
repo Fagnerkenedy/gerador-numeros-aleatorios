@@ -2,11 +2,14 @@ import { Checkbox, Form, InputNumber, Menu, Modal, Select, Switch, Typography } 
 import fields from "./fields"
 import { useState } from "react"
 import './styles.css'
+import { Picker } from "antd-mobile"
 
 const FormItem = ({ form }) => {
     const [checked, setChecked] = useState(true)
     const [open, setOpen] = useState(false);
     const { Text } = Typography
+
+    const numbers = Array.from({ length: 60 }, (_, i) => ({ label: i, value: i }));
 
     const handleSelect = (item) => {
         setOpen(false)
@@ -18,7 +21,7 @@ const FormItem = ({ form }) => {
         // document.getElementById('scrollableDiv').scrollIntoView({
         //     behavior: "smooth",
         // });
-        form.submit()
+        // form.submit()
     }
     return fields.map(field => {
         switch (field.type) {
@@ -35,6 +38,7 @@ const FormItem = ({ form }) => {
                                 },
                             ]}
                             initialValue={field.initialValue}
+                            style={{ width: "100%" }}
                         >
                             <Select
                                 placeholder="Selecione.."
@@ -79,6 +83,7 @@ const FormItem = ({ form }) => {
                             },
                         ]}
                         initialValue={field.initialValue}
+                        style={{ width: field.name == "quantidade" ? "100%" : "47%" }}
                     >
                         <InputNumber
                             inputMode="numeric"
@@ -87,6 +92,10 @@ const FormItem = ({ form }) => {
                             max={field.max || ''}
                             placeholder={field.placeholder || ''}
                         />
+                        {/* <Picker
+                            columns={[numbers]}
+                            visible={true}
+                        /> */}
                     </Form.Item>
                 )
 
@@ -111,6 +120,7 @@ const FormItem = ({ form }) => {
                         label={<span>{field.label}</span>}
                         name={field.name}
                         initialValue={field.initialValue}
+                        style={{ width: '47%' }}
                     >
                         <Switch className="switch" />
                     </Form.Item>

@@ -4,7 +4,7 @@ const fields = [
         name: "categoria",
         type: "select",
         required: true,
-        // initialValue: "Fritadeiras",
+        initialValue: "Fritadeiras",
         options: [
             {
                 id: 1,
@@ -81,6 +81,13 @@ const fields = [
                 max: 4.8,
                 qtd: 2,
             },
+            {
+                id: 11,
+                name: "Farofa",
+                min: 15,
+                max: 18,
+                qtd: 4,
+            },
         ],
     },
     {
@@ -88,21 +95,21 @@ const fields = [
         name: "minima",
         type: "number",
         required: true,
-        // initialValue: 167.0
+        initialValue: 167.0
     },
     {
         label: "Temperatura Final",
         name: "maxima",
         type: "number",
         required: true,
-        // initialValue: 172.0
+        initialValue: 172.0
     },
     {
         label: "Quantidade",
         name: "quantidade",
         type: "number",
         required: true,
-        // initialValue: 8
+        initialValue: 8
     },
     {
         label: "Casas decimais",
@@ -116,19 +123,19 @@ const fields = [
         label: "Agrupar Por",
         name: "agruparPor",
         type: "number",
-        placeholder: "Padrão: 20",
+        placeholder: "Padrão: 8",
     },
     {
         label: "Números por linha",
         name: "numerosPorLinha",
-        placeholder: "Padrão: 5",
+        placeholder: "Padrão: 1",
         type: "number",
     },
     {
         label: "Permitir duplicados",
         name: "duplicados",
         type: "switch",
-        initialValue: false
+        initialValue: true
     }
 ]
 
