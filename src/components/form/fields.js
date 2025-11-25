@@ -132,7 +132,7 @@ const fields = [
         type: "number",
     },
     {
-        label: "Permitir duplicados",
+        label: "Permitir números repetidos",
         name: "duplicados",
         type: "switch",
         initialValue: true

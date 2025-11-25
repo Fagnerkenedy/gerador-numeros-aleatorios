@@ -90,7 +90,7 @@ const List = () => {
                           {linha.map(number => {
                             return (
                               <>
-                                <Text style={{ fontSize: '18px' }}> {number} </Text>
+                                <Text style={{ fontSize: '18px' }}> {number} °C</Text>
                                 <Divider type="vertical" />
                               </>
                             )
