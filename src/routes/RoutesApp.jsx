@@ -7,9 +7,9 @@ const RoutesApp = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/form" element={<Formulario />}></Route>
-        <Route path="/list" element={<List />}></Route>
+        <Route path="/gerador-numeros-aleatorios/" element={<Home />}></Route>
+        <Route path="/gerador-numeros-aleatorios/form" element={<Formulario />}></Route>
+        <Route path="/gerador-numeros-aleatorios/list" element={<List />}></Route>
       </Routes>
     </BrowserRouter>
   );
