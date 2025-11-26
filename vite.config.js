@@ -10,5 +10,4 @@ export default defineConfig({
       },
     }),
   ],
-  base: "/gerador-numeros-aleatorios"
 })
