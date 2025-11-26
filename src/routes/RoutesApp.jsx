@@ -1,17 +1,17 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import Home from "../components/home/Home";
 import Formulario from "../components/form/Formulario";
 import List from "../components/list/List";
 
 const RoutesApp = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
-        <Route path="/gerador-numeros-aleatorios/" element={<Home />}></Route>
-        <Route path="/gerador-numeros-aleatorios/form" element={<Formulario />}></Route>
-        <Route path="/gerador-numeros-aleatorios/list" element={<List />}></Route>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/form" element={<Formulario />}></Route>
+        <Route path="/list" element={<List />}></Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
