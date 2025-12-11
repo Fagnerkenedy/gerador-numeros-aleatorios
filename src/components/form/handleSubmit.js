@@ -1,21 +1,33 @@
+import { useNavigate } from "react-router-dom";
+import agrupador from "../../utils/agrupador";
+import gerador from "../../utils/gerador";
+import geradorUnico from "../../utils/geradorUnico";
+import notify from "../../utils/notify";
 
-const handleSubmit = (fields) => {
+const handleSubmit = (fields, setLoading) => {
     try {
+        console.log("fields antes: ", fields);
+        setLoading(true)
+        // const query = new URLSearchParams(fields).toString()
+        // navigate(`/list?${encodeURIComponent(JSON.stringify(fields))}`)
+        // setLoading(true)
         let numbers
         if (fields.duplicados) {
             numbers = gerador(fields)
         } else {
             numbers = geradorUnico(fields)
         }
-        const grupos = agrupador(numbers, fields.agruparPor || 20)
+        const grupos = agrupador(numbers, fields.agruparPor || 8)
         const linhasAgrupadas = grupos.map((grupo) => {
-            return agrupador(grupo, fields.numerosPorLinha || 5)
+            return agrupador(grupo, fields.numerosPorLinha || 1)
         })
-        setResult(linhasAgrupadas)
-        navigate(`/list`)
+        console.log("resuklt", linhasAgrupadas);
+
+        const title = `${fields.categoria}: ${fields.minima}° até ${fields.maxima}°`
         setTimeout(() => {
-            setTitle(`${fields.categoria} ${fields.minima}° até ${fields.maxima}°`)
-        }, 200)
+            setLoading(false)
+        })
+        return {linhasAgrupadas, title}
     } catch (error) {
         console.log("Erro ao gerar números: ", error)
         notify({
@@ -27,7 +39,7 @@ const handleSubmit = (fields) => {
             width: 600,
             pauseOnHover: true
         })
-        setResult([])
+        setLoading(false)
     }
 }
 
