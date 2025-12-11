@@ -1,12 +1,7 @@
-import { Affix, Button, Card, Col, Form, Grid, Layout, Row, Typography } from "antd"
+import { Card, Col, Form, Grid, Layout, Row, Typography } from "antd"
 import FormItem from "./FormItem"
 import './styles.css'
-import { useLocation, useNavigate } from "react-router-dom";
-import gerador from "../../utils/gerador";
-import geradorUnico from "../../utils/geradorUnico";
-import agrupador from "../../utils/agrupador";
-import notify from "../../utils/notify";
-import { CaretRightOutlined, RightCircleOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 import CustomButton from "./CustomButton";
 import { useState } from "react";
 import handleSubmit from "./handleSubmit";
@@ -18,54 +13,12 @@ const Formulario = () => {
     const screens = useBreakpoint()
     const [form] = Form.useForm()
     const [loading, setLoading] = useState(false)
-    const { state } = useLocation()
     const navigate = useNavigate()
-    console.log("statesredse", state)
 
     const submit = (fields) => {
         const result = handleSubmit(fields, setLoading)
-        console.log("sdkl", result);
         navigate('/list', {state: { result: result.linhasAgrupadas, title: result.title, fields}});
     }
-
-    // const handleSubmit = (fields) => {
-    //     try {
-    //         console.log("fields antes: ", fields);
-    //         setLoading(true)
-    //         // const query = new URLSearchParams(fields).toString()
-    //         // navigate(`/list?${encodeURIComponent(JSON.stringify(fields))}`)
-    //         // setLoading(true)
-    //         let numbers
-    //         if (fields.duplicados) {
-    //             numbers = gerador(fields)
-    //         } else {
-    //             numbers = geradorUnico(fields)
-    //         }
-    //         const grupos = agrupador(numbers, fields.agruparPor || 8)
-    //         const linhasAgrupadas = grupos.map((grupo) => {
-    //             return agrupador(grupo, fields.numerosPorLinha || 1)
-    //         })
-    //         console.log("resuklt", linhasAgrupadas);
-
-    //         const title = `${fields.categoria}: ${fields.minima}° até ${fields.maxima}°`
-    //         setTimeout(() => {
-    //             setLoading(false)
-    //             navigate('/list', { state: { result: linhasAgrupadas, title: title } });
-    //         })
-    //     } catch (error) {
-    //         console.log("Erro ao gerar números: ", error)
-    //         notify({
-    //             message: "Erro ao gerar números",
-    //             description: error.message,
-    //             placement: 'top',
-    //             type: 'error',
-    //             duration: 10,
-    //             width: 600,
-    //             pauseOnHover: true
-    //         })
-    //         setLoading(false)
-    //     }
-    // }
 
     return (
         <Layout style={{ backgroundColor: "#1a1a1aff", minHeight: '100vh' }}>
@@ -86,11 +39,6 @@ const Formulario = () => {
 
                         <Form
                             form={form}
-                            // labelCol={
-                            //     screens.xs
-                            //         ? undefined
-                            //         : { flex: '150px' }
-                            // }
                             labelAlign="right"
                             labelWrap
                             wrapperCol={

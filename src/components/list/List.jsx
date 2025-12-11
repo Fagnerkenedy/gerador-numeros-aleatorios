@@ -1,10 +1,7 @@
 import { Affix, Button, Card, Col, Divider, FloatButton, Form, Grid, Layout, Row, Skeleton, Typography } from "antd";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import gerador from "../../utils/gerador";
-import geradorUnico from "../../utils/geradorUnico";
-import agrupador from "../../utils/agrupador";
-import { BackwardOutlined, CaretUpOutlined, LeftOutlined } from "@ant-design/icons";
+import { CaretUpOutlined, LeftOutlined } from "@ant-design/icons";
 import CustomButton from "../form/CustomButton";
 import { CheckCard } from "@ant-design/pro-components";
 import './styles.css'
@@ -13,17 +10,12 @@ const { useBreakpoint } = Grid;
 
 const List = () => {
   const screens = useBreakpoint();
-  // const [title, setTitle] = useState('')
-  // const [result, setResult] = useState([])
   const [loading, setLoading] = useState(false)
   const [list, setList] = useState([])
   const { state } = useLocation()
-  // const { search } = useLocation()
-  // const params = Object.fromEntries(new URLSearchParams(search))
   const { result, title, fields } = state
   const { Title } = Typography
   const navigate = useNavigate()
-  console.log("statestatestatestate: ", state)
 
   useEffect(() => {
     setList(list.length !== 0 ? list : result)
@@ -31,29 +23,8 @@ const List = () => {
 
   const submit = () => {
     const resultList = handleSubmit(fields, setLoading)
-    console.log("resultList", resultList);
     setList(resultList.linhasAgrupadas)
   }
-
-  // const handleGenerate = () => {
-  //   setLoading(true)
-  //   let numbers
-  //   if (fields.duplicados) {
-  //     numbers = gerador(fields)
-  //   } else {
-  //     numbers = geradorUnico(fields)
-  //   }
-  //   const grupos = agrupador(numbers, fields.agruparPor || 20)
-  //   const linhasAgrupadas = grupos.map((grupo) => {
-  //     return agrupador(grupo, fields.numerosPorLinha || 5)
-  //   })
-  //   console.log("resuklt", linhasAgrupadas);
-
-  //   setTitle(`${fields.categoria}: ${fields.minima}° até ${fields.maxima}°`)
-  //   setResult(linhasAgrupadas)
-  //   setLoading(false)
-  // }
-
 
   const { Text } = Typography
   let i = 1
@@ -88,7 +59,6 @@ const List = () => {
         >
           <Col style={{ minHeight: "74vh" }}>
             <Row style={{ justifyContent: "space-around" }}>
-              {console.log("lasifgnjesn", list)}
               {list.length !== 0 && list.map((group) => {
                 return (
                   <Col span={11}>
