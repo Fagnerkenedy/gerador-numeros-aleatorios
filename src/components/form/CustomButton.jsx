@@ -1,7 +1,7 @@
 import { RedoOutlined, RightCircleOutlined, SyncOutlined } from "@ant-design/icons"
 import { Affix, Button, Col } from "antd"
 
-const CustomButton = ({ text, icon, loading }) => {
+const CustomButton = ({ text, icon, loading, onClick }) => {
     return (
         <Affix offsetBottom={30}>
             <Col span={10} offset={16}>
@@ -14,6 +14,7 @@ const CustomButton = ({ text, icon, loading }) => {
                     loading={loading && { icon: <SyncOutlined spin /> }}
                     icon={icon == "redo" ? <SyncOutlined /> : <RightCircleOutlined />}
                 // onClick={() => document.getElementById('scrollableDiv').scrollIntoView({ behavior: "smooth" })}
+                    onClick={onClick}
                 >
                     {text ? text : "Gerar"}
                 </Button>
