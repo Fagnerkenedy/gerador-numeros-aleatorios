@@ -6,6 +6,7 @@ import CustomButton from "../form/CustomButton";
 import { CheckCard } from "@ant-design/pro-components";
 import './styles.css'
 import handleSubmit from "../form/handleSubmit";
+import Header from "../header/Header";
 const { useBreakpoint } = Grid;
 
 const List = () => {
@@ -30,15 +31,8 @@ const List = () => {
   let i = 1
   return (
     <Layout style={{ backgroundColor: "#1a1a1aff", minHeight: '100vh' }}>
+      <Header />
       <Row style={{ justifyContent: "center", alignItems: "center" }}>
-        <Col flex="100px">
-          <Affix offsetTop={15}>
-            <Button onClick={() => navigate(-1)} style={{ fontSize: 30, color: "white" }} type="text" shape="circle" icon={<LeftOutlined />} />
-          </Affix>
-        </Col>
-        <Col>
-          <Title style={{ color: "white", margin: 15 }} level={3}>Gerador de temperaturas</Title>
-        </Col>
         <Card
           style={{
             minWidth:

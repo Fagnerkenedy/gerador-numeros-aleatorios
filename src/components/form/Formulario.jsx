@@ -1,13 +1,13 @@
-import { Card, Col, Form, Grid, Layout, Row, Typography } from "antd"
+import { Card, Col, Form, Grid, Layout, Row } from "antd"
 import FormItem from "./FormItem"
 import './styles.css'
 import { useNavigate } from "react-router-dom";
 import CustomButton from "./CustomButton";
 import { useState } from "react";
 import handleSubmit from "./handleSubmit";
+import Header from "../header/Header";
 
 const { useBreakpoint } = Grid;
-const { Title } = Typography
 
 const Formulario = () => {
     const screens = useBreakpoint()
@@ -22,8 +22,8 @@ const Formulario = () => {
 
     return (
         <Layout style={{ backgroundColor: "#1a1a1aff", minHeight: '100vh' }}>
+            <Header />
             <Row style={{ justifyContent: "center" }}>
-                <Title style={{ color: "white", margin: 15 }} level={3}>Gerador de temperaturas</Title>
                 <Col style={{ width: screens.xs ? '100%' : "", height: screens.xs ? '100vh' : "calc(100vh - 25px)", maxHeight: "200px" }}>
                     <Card
                         style={{
