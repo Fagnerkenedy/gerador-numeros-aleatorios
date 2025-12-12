@@ -3,7 +3,7 @@ import { Affix, Button, Col } from "antd"
 
 const CustomButton = ({ text, icon, loading, onClick }) => {
     return (
-        <Affix offsetBottom={30}>
+        <Affix offsetBottom={55}>
             <Col span={10} offset={16}>
                 <Button
                     style={{ backgroundColor: "#1a1a1aff", borderRadius: 50, width: "100%", height: 50 }}

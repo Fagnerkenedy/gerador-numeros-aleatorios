@@ -1,5 +1,5 @@
 import { Affix, Button, Card, Col, Divider, FloatButton, Form, Grid, Layout, Row, Skeleton, Typography } from "antd";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { CaretUpOutlined, LeftOutlined } from "@ant-design/icons";
 import CustomButton from "../form/CustomButton";
@@ -17,6 +17,8 @@ const List = () => {
   const { result, title, fields } = state
   const { Title } = Typography
   const navigate = useNavigate()
+  const endRef = useRef()
+  const [checkedCard, setCheckedCard] = useState(false)
 
   useEffect(() => {
     setList(list.length !== 0 ? list : result)
@@ -25,6 +27,10 @@ const List = () => {
   const submit = () => {
     const resultList = handleSubmit(fields, setLoading)
     setList(resultList.linhasAgrupadas)
+    setCheckedCard(false)
+    if (endRef.current) {
+      endRef.current.scrollIntoView({ behavior: "smooth" })
+    }
   }
 
   const { Text } = Typography
@@ -32,6 +38,7 @@ const List = () => {
   return (
     <Layout style={{ backgroundColor: "#1a1a1aff", minHeight: '100vh' }}>
       <Header />
+      <div ref={endRef} />
       <Row style={{ justifyContent: "center", alignItems: "center" }}>
         <Card
           style={{
@@ -85,9 +92,9 @@ const List = () => {
           <Form
             onFinish={e => submit()}
           >
-            <CustomButton text="Gerar" icon="redo" loading={loading} />
+            <CustomButton text="Regerar" icon="redo" loading={loading} />
           </Form>
-          <FloatButton.BackTop icon={<CaretUpOutlined />} style={{ width: 80, height: 80, marginBottom: 50 }} />
+          <FloatButton.BackTop icon={<CaretUpOutlined />} style={{ width: 80, height: 80, marginBottom: 80 }} />
         </Card>
       </Row>
     </Layout>
