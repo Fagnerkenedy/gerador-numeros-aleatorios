@@ -18,7 +18,7 @@ const List = () => {
   const { Title } = Typography
   const navigate = useNavigate()
   const endRef = useRef()
-  const [checkedCard, setCheckedCard] = useState(false)
+  const [selectedCards, setSelectedCards] = useState([])
 
   useEffect(() => {
     setList(list.length !== 0 ? list : result)
@@ -27,18 +27,26 @@ const List = () => {
   const submit = () => {
     const resultList = handleSubmit(fields, setLoading)
     setList(resultList.linhasAgrupadas)
-    setCheckedCard(false)
+    setSelectedCards([])
     if (endRef.current) {
-      endRef.current.scrollIntoView({ behavior: "smooth" })
+      endRef.current.scrollIntoView()
     }
+  }
+
+  const toggleCard = (index) => {
+    setSelectedCards(prev =>
+      prev.includes(index)
+        ? prev.filter(i => i !== index)
+        : [...prev, index]
+    )
   }
 
   const { Text } = Typography
   let i = 1
   return (
     <Layout style={{ backgroundColor: "#1a1a1aff", minHeight: '100vh' }}>
-      <Header />
       <div ref={endRef} />
+      <Header />
       <Row style={{ justifyContent: "center", alignItems: "center" }}>
         <Card
           style={{
@@ -60,13 +68,18 @@ const List = () => {
         >
           <Col style={{ minHeight: "74vh" }}>
             <Row style={{ justifyContent: "space-around" }}>
-              {list.length !== 0 && list.map((group) => {
+              {list.length !== 0 && list.map((group, index) => {
+                console.log("grupo:",group)
+                console.log("grupo index:",index)
                 return (
                   <Col span={11}>
                     <CheckCard
+                      key={index}
                       title={`Grupo ${i++}`}
                       className="customCard"
                       style={{ width: "100%" }}
+                      checked={selectedCards.includes(index)}
+                      onClick={() => toggleCard(index)}
                     >
                       {loading ? <Skeleton active /> :
                         group.map((linha) => {
