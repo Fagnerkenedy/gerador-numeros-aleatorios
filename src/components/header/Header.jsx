@@ -1,5 +1,5 @@
 import { LeftOutlined } from "@ant-design/icons"
-import { Affix, Button, Col, Row, Typography } from "antd"
+import { Button, Col, Row, Typography } from "antd"
 import { useNavigate } from "react-router-dom"
 const { Title } = Typography
 
@@ -8,10 +8,8 @@ const Header = () => {
 
     return (
         <Row>
-            <Col span={4}>
-                <Affix offsetTop={15}>
-                    <Button onClick={() => navigate(-1)} style={{ fontSize: 30, color: "white" }} type="text" shape="circle" icon={<LeftOutlined />} />
-                </Affix>
+            <Col style={{ alignContent: "center"}} span={4}>
+                <Button onClick={() => navigate(-1)} style={{ width: "100%", height: "100%", fontSize: 30, color: "white" }} type="text" shape="circle" icon={<LeftOutlined />} />
             </Col>
             <Col span={16}>
                 <Title style={{ color: "white", margin: 15 }} level={3}>Gerador de temperaturas</Title>

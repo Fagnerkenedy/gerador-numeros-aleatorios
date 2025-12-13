@@ -16,7 +16,7 @@ const handleSubmit = (fields, setLoading) => {
         const linhasAgrupadas = grupos.map((grupo) => {
             return agrupador(grupo, fields.numerosPorLinha || 1)
         })
-        const title = `${fields.categoria}: ${fields.minima}° até ${fields.maxima}°`
+        const title = `${fields.categoria} (${fields.minima}°C até ${fields.maxima}°C)`
         setTimeout(() => {
             setLoading(false)
         })
